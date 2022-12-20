@@ -42,6 +42,24 @@ export const sliderItems = [
       title: "LIGHT JACKETS",
       cat:"jeans"
     },
+    {
+      id: 4,
+      img: "https://images.pexels.com/photos/6930504/pexels-photo-6930504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "SPORT",
+      cat:"tshirt"
+    },
+    {
+      id: 5,
+      img: "https://images.pexels.com/photos/10193442/pexels-photo-10193442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "SWEAR",
+      cat:"swear"
+    },
+    {
+      id: 6,
+      img: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "MEN",
+      cat:"men"
+    }
   ];
 
   export const popularProducts = [

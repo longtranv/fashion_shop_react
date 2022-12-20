@@ -61,7 +61,7 @@ const Error = styled.span`
 `
 const Login = () => {
 
-    const[username, setUsername]= useState("");
+    const[email, setEmail]= useState("");
     const[password, setPassword]= useState("");
     const dispatch = useDispatch();
     const {currentUser, isFetching, error} = useSelector((state)=>state.user);
@@ -69,7 +69,7 @@ const Login = () => {
 
     const handleClick = (e)=>{
         e.preventDefault()
-        login(dispatch, {username, password})
+        login(dispatch, {email, password})
         if(currentUser){
             navigate("/");
         }
@@ -80,7 +80,7 @@ const Login = () => {
         <Wrapper>
             <Title>SIGN IN</Title>
             <Form>
-                <Input placeholder = "username" onChange={(e)=>setUsername(e.target.value)}></Input>
+                <Input placeholder = "username" onChange={(e)=>setEmail(e.target.value)}></Input>
                 <Input placeholder = "password" type="password" onChange={(e)=>setPassword(e.target.value)}></Input>
                 <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
                 {error && <Error>Something went wrong</Error>}
