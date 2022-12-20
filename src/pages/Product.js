@@ -8,7 +8,7 @@ import {useLocation} from 'react-router-dom'
 import { useEffect, useState } from "react"
 import {publicRequest} from '../requestMethod'
 import {addProduct} from '../redux/cartRedux'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const Container = styled.div`
 
@@ -110,7 +110,8 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const user = useSelector((state)=> state.user.currentUser)
 
   useEffect(()=>{
       const getProduct = async ()=>{
@@ -134,7 +135,11 @@ const Product = () => {
   }
 
   const handleClick = ()=>{
-    dispatch(addProduct({...product, quantity, color, size}));
+    if(user){
+      dispatch(addProduct({...product, quantity, color, size}));
+    }else{
+      alert("please login or register before shopping!")
+    }
   }
   return (
     <Container>

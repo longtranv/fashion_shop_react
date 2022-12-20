@@ -54,7 +54,7 @@ const Error = styled.span`
     color: red ;
 `
 const Register = () => {
-    const[username, setUsername]= useState("");
+    const[name, setUsername]= useState("");
     const[password, setPassword]= useState("");
     const[confirmPassword, setConfirmPassword]= useState("");
     const[email, setEmail]= useState("");
@@ -64,7 +64,7 @@ const Register = () => {
 
     const handleClick = (e)=>{
         e.preventDefault();
-        register(dispatch, {username, email, password})
+        register(dispatch, {name, email, password})
         if(currentUser && confirmPassword===password){
             navigate("/");
         }
@@ -86,6 +86,7 @@ const Register = () => {
                     data in accordance with the <b>PRIVACY POLICY</b>
                 </Agreement>
                 <Button onClick={handleClick} disabled={isFetching}>CREATE</Button>
+                {error && <Error>Something went wrong</Error>}
             </Form>
         </Wrapper>
     </Container>

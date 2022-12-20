@@ -14,7 +14,7 @@ export const login = async (dispatch, user)=>{
 export const register = async (dispatch, user)=>{
     dispatch(registerStart());
     try {
-        const res = await publicRequest.post("/auth/register")
+        const res = await publicRequest.post("/auth/register", user)
         dispatch(registerSuccess(res.data));
     } catch (error) {
         dispatch(registerFailure());
