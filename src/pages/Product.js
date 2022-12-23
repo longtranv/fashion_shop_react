@@ -111,7 +111,7 @@ const Product = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state)=> state.user.currentUser)
+  const user = useSelector((state)=> state.user.currentUser);
 
   useEffect(()=>{
       const getProduct = async ()=>{
@@ -155,7 +155,7 @@ const Product = () => {
           <Desc>
             {product.desc}
           </Desc>
-          <Price>{product.price}</Price>
+          <Price>{product.price} $</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>

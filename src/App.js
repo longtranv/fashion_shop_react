@@ -12,6 +12,7 @@ import Success from './pages/Success';
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
