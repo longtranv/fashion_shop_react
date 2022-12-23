@@ -2,7 +2,7 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/R7QYKhY/imani-bahati-Lx-Vx-PA1-LOVM-unsplash.jpg",
+      img: "https://i.ibb.co/RbxwJf1/pngegg.png",
       title: "SUMMER SALE",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: "f5fafd",
