@@ -17,6 +17,7 @@ function App() {
     createRoutesFromElements(
       <Route>
         <Route path='/' element={<Home/>}/>
+        <Route path='/products/' element={<ProductList/>} errorElement={<ErrorPage/>}/>
         <Route path='/products/:category' element={<ProductList/>} errorElement={<ErrorPage/>}/>
         <Route path='/product/:id' element={<Product/>} errorElement={<ErrorPage/>}/>
         <Route path='/cart' element={<Cart/>} errorElement={<ErrorPage/>}/>

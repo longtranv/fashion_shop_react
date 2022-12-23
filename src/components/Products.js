@@ -12,7 +12,7 @@ const Container = styled.div`
 const Products = ({cat, filters, sort}) => {
   const [products, setProducts]= useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  
   useEffect(()=>{
     const getProducts = async ()=>{
       try{
@@ -23,15 +23,19 @@ const Products = ({cat, filters, sort}) => {
       }
     }
     getProducts()
-  },[cat])
+  },[])
   
+  useEffect(()=>{
+    setProducts((prev)=>
+        [...prev].sort((a,b)=>a.createdAt-b.createdAt));
+  }, [products])
 
   useEffect(()=>{
-    cat && setFilteredProducts(
+      products && setFilteredProducts(
       products.filter(item=>Object.entries(filters).every(([key, value])=> item[key].includes(value)))
 
     );
-  },[products, cat, filters])
+  },[filters])
 
   useEffect(()=>{
       if(sort==="newest"){
@@ -51,11 +55,15 @@ const Products = ({cat, filters, sort}) => {
   );
   return (
     <Container>
-        { cat 
+        {/* { cat 
             ? filteredProducts.map((item)=>(<Product item={item} key={item.id}/>)) 
-            : products
+            : filteredProducts
               .slice(0, 8)
-              .map((item)=>(<Product item={item} key={item.id}/>))}
+              .map((item)=>(<Product item={item} key={item.id}/>))} */}
+              {(!filters && sort ==="newest") ? products
+              .slice(0, 8)
+              .map((item)=>(<Product item={item} key={item.id}/>))
+              : filteredProducts.map((item)=>(<Product item={item} key={item.id}/>))}
     </Container>
   )
 }
