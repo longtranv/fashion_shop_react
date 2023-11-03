@@ -16,26 +16,22 @@ const Products = ({cat, filters, sort}) => {
   useEffect(()=>{
     const getProducts = async ()=>{
       try{
-        const res = await axios.get(cat?`https://mernappapi.onrender.com/v1/product?category=${cat}`:"https://mernappapi.onrender.com/v1/product");
+        const res = await axios.get(cat?`https://api-fashionshop-aka.onrender.com/v1/product?category=${cat}`:"https://api-fashionshop-aka.onrender.com/v1/product");
         setProducts(res.data);
       }catch(err){
 
       }
     }
     getProducts()
-  },[])
+  },[cat])
   
-  useEffect(()=>{
-    setProducts((prev)=>
-        [...prev].sort((a,b)=>a.createdAt-b.createdAt));
-  }, [products])
 
   useEffect(()=>{
-      products && setFilteredProducts(
+      cat && setFilteredProducts(
       products.filter(item=>Object.entries(filters).every(([key, value])=> item[key].includes(value)))
 
     );
-  },[filters])
+  },[ products, cat, filters])
 
   useEffect(()=>{
       if(sort==="newest"){
@@ -55,15 +51,11 @@ const Products = ({cat, filters, sort}) => {
   );
   return (
     <Container>
-        {/* { cat 
+        { cat 
             ? filteredProducts.map((item)=>(<Product item={item} key={item.id}/>)) 
-            : filteredProducts
+            : products
               .slice(0, 8)
-              .map((item)=>(<Product item={item} key={item.id}/>))} */}
-              {(!filters && sort ==="newest") ? products
-              .slice(0, 8)
-              .map((item)=>(<Product item={item} key={item.id}/>))
-              : filteredProducts.map((item)=>(<Product item={item} key={item.id}/>))}
+              .map((item)=>(<Product item={item} key={item.id}/>))}
     </Container>
   )
 }

@@ -69,6 +69,10 @@ const Avatar = styled.img`
 const NavBar = () => {
   const quantity = useSelector((state)=>state.cart.quantity);
   const user = useSelector((state)=>state.user.currentUser);
+
+  const handleClick = ()=>{
+    
+  }
   return (
     <Container>
       <Wrapper>
@@ -82,7 +86,7 @@ const NavBar = () => {
         <Center><Logo><Link to={"/"}>UIT.</Link></Logo></Center>
         <Right>
           {user?
-            <><Avatar src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' />
+            <><Avatar onClick={handleClick} src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' />
               <MenuItem>
                 <Badge badgeContent={quantity} color="primary">
                  <Link to={"/cart"}><ShoppingCartOutlined /></Link>

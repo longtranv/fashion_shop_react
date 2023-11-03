@@ -12,7 +12,7 @@ import StripeCheckout from "react-stripe-checkout"
 import { useEffect, useState } from "react"
 import { userRequest } from "../requestMethod"
 
-const KEY = "sk_test_51MBZn5Gdk95zAhZQR0C1cbYXoOR9EmeYTR9Scf2qnHMhxZYTjYl8eeIhkXeeg48Z6o9I4bCfeudScUKjVuw2D0yV00NsJAe2it";
+const KEY = "pk_test_51MBZn5Gdk95zAhZQBQ6B1J5MauVczf3wXO0Uob34vj3q5njV23kXe8rJ7wtJzXzfoLFSVU0o3OQDFHvOPkVfaz9g00GkGq6N3H";
 const Container = styled.div`
 `
 const Wrapper = styled.div`
@@ -153,6 +153,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state)=>state.cart);
+  const user = useSelector((state)=> state.currentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [stripeToken, setStripeToken] = useState(null);
@@ -166,6 +167,8 @@ const Cart = () => {
         const res = await userRequest.post("/payment", {
           tokenId: stripeToken.id,
           amount: 500,
+        }, {
+          headers: {'Authorization': `Bearer ${user.tokens.access.token}`}
         });
         navigate("/success", {
           state: {
